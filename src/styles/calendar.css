@@ -1,0 +1,76 @@
+/* RESET DEFAULTS */
+.rbc-calendar {
+    background-color: #ffffff;
+    font-family: Inter, sans-serif;
+  }
+  
+  /* Remove bold header */
+  .rbc-header {
+    font-weight: 500;
+    font-size: 18px;
+    color: #333333;
+    border-bottom: 1px solid #e5e7eb; /* tailwind gray-200 */
+    text-align: center;
+    padding: 0.75rem 0;
+  }
+  
+  .rbc-header + .rbc-header {
+    border-left: 1px solid #e5e7eb;
+  }
+  
+  /* Light grid lines */
+  .rbc-time-content > * + * {
+    border-left: 1px solid #e5e7eb;
+  }
+  
+  .rbc-timeslot-group {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  /* TimeGutter left */
+  .rbc-time-gutter {
+    color: #6b7280; /* tailwind gray-500 */
+    font-size: 12px;
+  }
+  
+  /* Today highlight column */
+  .rbc-day-slot.rbc-today {
+    background-color: #f0fdf4; /* tailwind green-50 */
+  }
+  
+  /* Event styling */
+  .rbc-event {
+    background-color: #ecfccb; /* tailwind green-100 */
+    border: 1px solid #bbf7d0; /* tailwind green-200 */
+    color: #166534; /* tailwind green-700 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 0.25rem 0.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    overflow: hidden;
+  }
+  
+  /* Current time indicator (red line) */
+  .rbc-current-time-indicator {
+    background-color: #ef4444 !important; /* tailwind red-500 */
+    height: 2px;
+  }
+
+  /* Remove all day section */
+  .rbc-allday-cell {
+    display: none !important;
+  }
+
+  /* Remove event box header */
+.rbc-event-label {
+    display: none !important;
+  }
+  
+  /* Clean event box from padding */
+  .rbc-event {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  
