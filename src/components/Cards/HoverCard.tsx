@@ -1,12 +1,4 @@
 import {
-  CalendarCheck2,
-  MapPin,
-  NotebookText,
-  User,
-  Pencil,
-  Contact
-} from "lucide-react"
-import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger

@@ -5,13 +5,16 @@ import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Button } from "../ui/button"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { CalendarIcon, ChevronDownIcon } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
 import { format } from "date-fns"
 import { de } from "date-fns/locale"
 import { Calendar } from "../ui/calendar"
 import { DateRange } from "react-day-picker"
 import { supabase } from "@/utils/supabase/client"
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "../ui/select"
+import { Patient } from "@/types/patient"
+import { AppointmentAssignee } from "@/types/appointmentAssignee"
+import { Relative } from "@/types/relative"
 
 interface EventFormProps {
   mode: "create" | "edit"
@@ -26,6 +29,11 @@ interface EventFormProps {
   }
 }
 
+interface Category {
+  id: string
+  label: string
+}
+
 export function EventForm({ mode, initialData }: EventFormProps) {
   const [title, setTitle] = useState(initialData?.title ?? "")
   const [location, setLocation] = useState(initialData?.location ?? "")
@@ -36,9 +44,9 @@ export function EventForm({ mode, initialData }: EventFormProps) {
   const [assigneeIds, setAssigneeIds] = useState<string[]>(initialData?.assigneeIds ?? [])
 
 
-  const [categories, setCategories] = useState<any[]>([])
-  const [patients, setPatients] = useState<any[]>([])
-  const [assigneeDisplayList, setAssigneeDisplayList] = useState<any[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [patients, setPatients] = useState<Patient[]>([])
+  const [assigneeDisplayList, setAssigneeDisplayList] = useState<AppointmentAssignee[]>([])
 
   useEffect(() => {
     async function fetchOptions() {
@@ -50,8 +58,8 @@ export function EventForm({ mode, initialData }: EventFormProps) {
       if (categoryData) setCategories(categoryData)
       if (patientData) setPatients(patientData)
       if (assigneeData && relativesData) {
-        const enriched = assigneeData.map((asg) => {
-          const relative = relativesData.find((r) => r.id === asg.user)
+        const enriched = assigneeData.map((asg: AppointmentAssignee) => {
+          const relative : Relative | undefined = relativesData.find((r) => r.id === asg.user)
           return {
             id: asg.id,
             user: asg.user,

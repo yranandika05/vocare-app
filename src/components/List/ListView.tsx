@@ -3,7 +3,6 @@
 import { CalendarEvent } from "@/types/event"
 import { eachDayOfInterval, format, isToday } from "date-fns"
 import { de } from "date-fns/locale/de"
-import { CalendarCheck2, MapPin, NotebookText, User } from "lucide-react"
 import { useEffect } from "react"
 import EventCard from "../Cards/EventCard"
 
@@ -33,10 +32,6 @@ export function ListView({ startDate, events }: ListViewProps) {
       }
     })
   })
-
-  useEffect(()=> {
-          console.log("group:", grouped)
-      }, [])
 
   return (
     <div className="flex flex-col items-center justify-center w-full py-8 space-y-8">

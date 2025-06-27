@@ -11,6 +11,7 @@ import { CalendarFilter } from "@/types/filter"
 import { Category } from "@/types/category"
 import { Patient } from "@/types/patient"
 import { startOfDay } from "date-fns"
+import { AppointmentAssignee } from "@/types/appointmentAssignee"
 
 export default function CalendarPage() {
   const [currentView, setCurrentView] = useState<"list" | "week" | "month">("week")
@@ -56,7 +57,7 @@ export default function CalendarPage() {
       const mapped = appointmentsData.map((appt) => {
         const assigneesRaw = appt.appointment_assignee || []
       
-        const assignees = assigneesRaw.map((asg: any) => {
+        const assignees = assigneesRaw.map((asg: AppointmentAssignee) => {
           let assigneeName = "Unbekannt"
       
           if (asg.user_type === "relatives") {
@@ -93,12 +94,7 @@ export default function CalendarPage() {
   
     fetchAppointments()
   }, [])
-  
 
-
-  useEffect(()=> {
-    console.log("app:", appointments)
-}, [appointments])
 
   const filteredAppointments = appointments.filter((event) => {
     const { title, category, client, location, dateRange } = filters

@@ -16,16 +16,24 @@ import {
   SelectItem,
   SelectValue
 } from "../ui/select"
+import { Patient } from "@/types/patient"
+import { AppointmentAssignee } from "@/types/appointmentAssignee"
+import { Relative } from "@/types/relative"
 
 interface Props {
   filters: CalendarFilter
   setFilters: (filters: CalendarFilter) => void
 }
 
+interface Category {
+  id: string
+  label: string
+}
+
 export function CalendarFilterPopover({ filters, setFilters }: Props) {
-  const [categories, setCategories] = useState<any[]>([])
-  const [patients, setPatients] = useState<any[]>([])
-  const [assigneeDisplayList, setAssigneeDisplayList] = useState<any[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [patients, setPatients] = useState<Patient[]>([])
+  const [assigneeDisplayList, setAssigneeDisplayList] = useState<AppointmentAssignee[]>([])
 
   useEffect(() => {
     async function fetchOptions() {
@@ -36,8 +44,8 @@ export function CalendarFilterPopover({ filters, setFilters }: Props) {
       if (categoryData) setCategories(categoryData)
       if (patientData) setPatients(patientData)
       if (assigneeData && relativesData) {
-        const enriched = assigneeData.map((asg) => {
-            const relative = relativesData.find((r) => r.id === asg.user)
+        const enriched = assigneeData.map((asg: AppointmentAssignee) => {
+            const relative: Relative | undefined = relativesData.find((r) => r.id === asg.user)
             return {
             id: asg.id,
             user: asg.user,
