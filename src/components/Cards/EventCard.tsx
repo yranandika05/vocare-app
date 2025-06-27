@@ -84,7 +84,6 @@ export default function EventCard({ event }:EventCardProps ) {
           <DialogContent>
             <DialogTitle>Termin bearbeiten</DialogTitle>
             <EventForm
-              mode="edit"
               initialData={{
                 title: event.title,
                 location: event.location,

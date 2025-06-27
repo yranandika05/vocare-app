@@ -3,7 +3,6 @@
 import { CalendarEvent } from "@/types/event"
 import { eachDayOfInterval, format, isToday } from "date-fns"
 import { de } from "date-fns/locale/de"
-import { useEffect } from "react"
 import EventCard from "../Cards/EventCard"
 
 interface ListViewProps {

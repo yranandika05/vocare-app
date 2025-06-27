@@ -17,7 +17,6 @@ import { AppointmentAssignee } from "@/types/appointmentAssignee"
 import { Relative } from "@/types/relative"
 
 interface EventFormProps {
-  mode: "create" | "edit"
   initialData?: {
     title?: string
     location?: string
@@ -34,7 +33,7 @@ interface Category {
   label: string
 }
 
-export function EventForm({ mode, initialData }: EventFormProps) {
+export function EventForm({ initialData }: EventFormProps) {
   const [title, setTitle] = useState(initialData?.title ?? "")
   const [location, setLocation] = useState(initialData?.location ?? "")
   const [notes, setNotes] = useState(initialData?.notes ?? "")
@@ -284,7 +283,7 @@ export function EventForm({ mode, initialData }: EventFormProps) {
       {/* <Button onClick={() => onSubmit?.({ title, location, notes, categoryId, patientId, dateRange })}>
         Speichern
       </Button> */}
-      <Button disabled variant="secondary">
+      <Button disabled variant="secondary"> 
         Speichern (Prototyp – deaktiviert)
       </Button>
     </div>

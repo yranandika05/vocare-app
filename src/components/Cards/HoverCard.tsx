@@ -6,13 +6,6 @@ import {
 import { format } from "date-fns"
 import { de } from "date-fns/locale/de"
 import { CalendarEvent } from "@/types/event"
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle
-} from "@/components/ui/dialog"
-import { EventForm } from "../Form/EventForm"
 import EventCard from "./EventCard"
 
 interface EventProps  {

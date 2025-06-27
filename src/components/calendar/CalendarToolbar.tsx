@@ -88,7 +88,7 @@ export function CalendarToolbar({
             </DialogTrigger>
             <DialogContent>
                 <DialogTitle>Neuen Termin erstellen</DialogTitle>
-                <EventForm mode="create" />
+                <EventForm />
             </DialogContent>
         </Dialog>
       </div>
